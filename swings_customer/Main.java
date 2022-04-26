@@ -60,6 +60,7 @@ public class Main extends Frame implements ActionListener{
 			newCustomer = true;
 			for(Customer i :clist) {
 				if(i.username.equals(un) && i.pass.equals(pass)) {
+					JOptionPane.showMessageDialog(this, "USER FOUND");
 					area.setText("");
 					area.setText(i.toString());
 					newCustomer = false;
@@ -67,6 +68,7 @@ public class Main extends Frame implements ActionListener{
 			}
 			if(newCustomer)
 			{	
+				JOptionPane.showMessageDialog(this, "NO USER FOUND\nADD AS A NEW CUSTOMER");
 				submit.setVisible(false);
 				phone.setVisible(true);
 				phonetxt.setVisible(true);
