@@ -1,17 +1,9 @@
-package telephone;
-import telephone.*;
+package Phone;
 
-public class contacts {
-	long phno;
-	String name;
-	
-	
-	public contacts(String name,long phno) {
+public class Contacts {
+	int num;String name;
+	public Contacts(int n,String name) {
+		this.num = n;
 		this.name = name;
-		this.phno = phno;
-	}
-	
-	public String toString() {
-		return "name "+name+" phno "+phno;
 	}
 }
