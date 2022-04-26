@@ -1,43 +1,39 @@
-package telephone;
+package Phone;
 import java.util.*;
-import telephone.*;
 public class missedCallList {
-		
-	Scanner in = new Scanner(System.in);
-	ArrayList<missedcall> mc = new ArrayList<missedcall>();
-	
+	ArrayList<missedCall> mlist = new ArrayList<missedCall>();
+	Scanner sc = new Scanner(System.in);
 	public missedCallList() {
-		System.out.println("Enter y to give missedcall ");
 		while(true) {
-			if(in.nextLine().equals("y")) {
+			System.out.println("Enter y to give missedcall");
+			if(sc.nextLine().equals("y")) {
 				System.out.println("Enter number");
-				long num = Long.parseLong(in.nextLine());
-				if(mc.size() > 4) {
-					mc.remove(0);
-					
+				int num = Integer.parseInt(sc.nextLine());
+				if(mlist.size()==10) {
+					mlist.remove(0);
 				}
-				mc.add(new missedcall(num));
+				mlist.add(new missedCall(num));
 			}
 			else {
 				break;
 			}
-		}	
+		}
 	}
 	
 	public void viewLog() {
-		for(int i = 0; i < mc.size();) {
-			System.out.println("Enter option "+(i+1)+" :\n delete this missedcall\n2Next\n3.display missedcall\n4.exit");
-			int n = Integer.parseInt(in.nextLine());
-			if(n == 2) {
+		for(int i=0;i<mlist.size();) {
+			System.out.println("Enter option for call "+(i+1)+" :\n1.Delete this missedcall\n2.Next\n3.Display this missedcall\n4.exit");
+			int n = Integer.parseInt(sc.nextLine());
+			if(n==2) {
 				i++;
-				
-			}else if(n == 1) {
-				mc.remove(mc.get(i));
-				
-			}else if(n ==3) {
-				System.out.println(mc.get(i));
-				
-			}else {
+			}
+			else if(n==1) {
+				mlist.remove(mlist.get(i));
+			}else if(n==3){
+				System.out.println(mlist.get(i));
+				System.out.println();
+			}
+			else {
 				break;
 			}
 		}
