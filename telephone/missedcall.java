@@ -1,25 +1,20 @@
-package telephone;
-import telephone.*;
+package Phone;
 import java.time.LocalDateTime;
-public class missedcall {
-	String name = "private caller";
-	long phno;
-	LocalDateTime t;
-	public missedcall(long phno) {
-		
-		this.phno = phno;
-		this.t = LocalDateTime.now();
-		
-		for(contacts i:contactList.getclist()) {
-			if(i.name.contentEquals(name)) {
+public class missedCall {
+	String name = "Private Caller";
+	int num;
+	LocalDateTime d;
+	public missedCall(int num) {
+		this.num = num;
+		this.d = LocalDateTime.now();
+		for(Contacts i: ContactList.getclist()) {
+			if(i.num==num) {
 				this.name = i.name;
 				break;
-				
 			}
 		}
-		
 	}
 	public String toString() {
-		return "name "+name+" phno "+phno+" time "+t;
+		return "Name: "+name+" Phone: "+num +" Date: "+d;
 	}
 }
