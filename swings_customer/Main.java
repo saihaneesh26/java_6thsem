@@ -70,6 +70,10 @@ public class Main extends Frame implements ActionListener{
 			if(newCustomer)
 			{	
 				JOptionPane.showMessageDialog(this, "ADD A NEW CUSTOMER");
+				username.setVisible(false);
+				usernametxt.setVisible(false);
+				password.setVisible(false);
+				passwordtxt.setVisible(false);
 				submit.setVisible(false);
 				phone.setVisible(true);
 				phonetxt.setVisible(true);
@@ -91,8 +95,13 @@ public class Main extends Frame implements ActionListener{
 			cidtxt.setVisible(false);
 			add.setVisible(false);
 			submit.setVisible(true);
+			username.setVisible(true);
+			usernametxt.setVisible(true);
+			password.setVisible(true);
+			passwordtxt.setVisible(true);
 			area.setText("");
-			area.setText(i.toString());
+			for (Customer f : clist)
+				area.setText(area.getText()+"\n"+f.toString());
 		}
 	}
 	public static void main(String[] args) {
