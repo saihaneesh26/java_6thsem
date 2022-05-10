@@ -12,10 +12,11 @@ public class Main extends Frame implements ActionListener{
 	JLabel username,password,cid,phone;
 	JTextField usernametxt,passwordtxt,cidtxt,phonetxt;
 	JButton submit,add;
-	
+	ArrayList<Staff> slist = new ArrayList<Staff>();
 	ArrayList<Customer> clist = new ArrayList<Customer>();
 	boolean newCustomer = false;
 	public Main() {
+		slist.add(new Staff("admin","admin"));
 		area = new JTextArea();
 		username = new JLabel("USERNAME");
 		password = new JLabel("PASSWORD");
@@ -25,7 +26,7 @@ public class Main extends Frame implements ActionListener{
 		passwordtxt = new JTextField();
 		cidtxt = new JTextField();
 		phonetxt = new JTextField();
-		submit = new JButton("SUBMIT");
+		submit = new JButton("LOGIN");
 		add = new JButton("ADD");
 		submit.addActionListener((ActionListener)this);
 		add.addActionListener((ActionListener)this);
@@ -53,22 +54,22 @@ public class Main extends Frame implements ActionListener{
 		cidtxt.setVisible(false);
 		add.setVisible(false);
 	}
+	
 	public void actionPerformed(ActionEvent ev) {
 		if(ev.getSource()==submit) {
 			String un = usernametxt.getText();
 			String pass = passwordtxt.getText();
-			newCustomer = true;
-			for(Customer i :clist) {
-				if(i.username.equals(un) && i.pass.equals(pass)) {
-					JOptionPane.showMessageDialog(this, "USER FOUND");
-					area.setText("");
-					area.setText(i.toString());
-					newCustomer = false;
+			newCustomer = false;
+			for(Staff i :slist) {
+				if(i.username.equals(un) && i.password.equals(pass)) {
+					JOptionPane.showMessageDialog(this, "LOGGED IN");
+					newCustomer = true;
 				}
 			}
+			
 			if(newCustomer)
 			{	
-				JOptionPane.showMessageDialog(this, "NO USER FOUND\nADD AS A NEW CUSTOMER");
+				JOptionPane.showMessageDialog(this, "ADD A NEW CUSTOMER");
 				submit.setVisible(false);
 				phone.setVisible(true);
 				phonetxt.setVisible(true);
@@ -76,6 +77,9 @@ public class Main extends Frame implements ActionListener{
 				cidtxt.setVisible(true);
 				add.setVisible(true);
 				newCustomer = false;
+			}
+			else {
+				JOptionPane.showMessageDialog(this, "NO USER FOUND");
 			}
 		}
 		if(ev.getSource()==add) {
