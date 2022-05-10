@@ -11,12 +11,16 @@ public class Main extends Frame implements ActionListener{
 	JTextArea area;
 	JLabel username,password,cid,phone;
 	JTextField usernametxt,passwordtxt,cidtxt,phonetxt;
-	JButton submit,add;
+	JButton bill,submit,add;
 	ArrayList<Staff> slist = new ArrayList<Staff>();
 	ArrayList<Customer> clist = new ArrayList<Customer>();
-	boolean newCustomer = false;
+	ArrayList<Item> items = new ArrayList<Item>();
+	JLabel item,price,quantity;
+	JTextField itemtxt,pricetxt,quantitytxt;
+	boolean newCustomer = false,first = true;
+	double total=0;
 	public Main() {
-		slist.add(new Staff("admin","admin"));
+		slist.add(new Staff("a","a"));
 		area = new JTextArea();
 		username = new JLabel("USERNAME");
 		password = new JLabel("PASSWORD");
@@ -28,11 +32,18 @@ public class Main extends Frame implements ActionListener{
 		phonetxt = new JTextField();
 		submit = new JButton("LOGIN");
 		add = new JButton("ADD");
+		item = new JLabel("ITEM");
+		itemtxt =  new JTextField();
+		price = new JLabel("price");
+		pricetxt =  new JTextField();
+		quantity = new JLabel("Quantity");
+		bill = new JButton("CHECK OUT");
+		quantitytxt =  new JTextField();
+		
 		submit.addActionListener((ActionListener)this);
 		add.addActionListener((ActionListener)this);
-		
+		bill.addActionListener((ActionListener)this);
 		// TODO Auto-generated method stub
-				System.out.println("hi");
 
 		add(username);
 		add(usernametxt);
@@ -42,16 +53,30 @@ public class Main extends Frame implements ActionListener{
 		add(phonetxt);
 		add(cid);
 		add(cidtxt);
+		add(item);
+		add(itemtxt);
+		add(quantity);
+		add(quantitytxt);
+		add(price);
+		add(pricetxt);
 		add(submit);
 		add(add);
+		add(bill);
 		add(area);
-		setSize(600,400);
-		setLayout(new GridLayout(6,2));
+		setSize(1000,800);
+		setLayout(new GridLayout(9,2));
 		setVisible(true);
 		phone.setVisible(false);
 		phonetxt.setVisible(false);
 		cid.setVisible(false);
 		cidtxt.setVisible(false);
+		price.setVisible(false);
+		pricetxt.setVisible(false);
+		item.setVisible(false);
+		itemtxt.setVisible(false);
+		quantity.setVisible(false);
+		quantitytxt.setVisible(false);
+		bill.setVisible(false);
 		add.setVisible(false);
 	}
 	
@@ -70,6 +95,7 @@ public class Main extends Frame implements ActionListener{
 			if(newCustomer)
 			{	
 				JOptionPane.showMessageDialog(this, "ADD A NEW CUSTOMER");
+				
 				username.setVisible(false);
 				usernametxt.setVisible(false);
 				password.setVisible(false);
@@ -79,14 +105,33 @@ public class Main extends Frame implements ActionListener{
 				phonetxt.setVisible(true);
 				cid.setVisible(true);
 				cidtxt.setVisible(true);
+				price.setVisible(true);
+				pricetxt.setVisible(true);
+				item.setVisible(true);
+				itemtxt.setVisible(true);
+				quantity.setVisible(true);
+				quantitytxt.setVisible(true);
 				add.setVisible(true);
 				newCustomer = false;
+				bill.setVisible(true);
 			}
 			else {
 				JOptionPane.showMessageDialog(this, "NO USER FOUND");
 			}
 		}
 		if(ev.getSource()==add) {
+			if (first)
+				area.setText("CUSTOMER: "+cidtxt.getText()+"\nPHONE: "+phonetxt.getText()+"\n");
+			Item i = new Item(itemtxt.getText(),Integer.parseInt(pricetxt.getText()),Double.parseDouble(quantitytxt.getText()));
+			items.add(i);
+			area.setText(area.getText()+"\n"+i.toString());
+			itemtxt.setText("");
+			pricetxt.setText("");
+			quantitytxt.setText("");
+			first = false;
+			
+		}
+		if(ev.getSource()==bill) {
 			Customer i = new Customer(usernametxt.getText(),passwordtxt.getText(),cidtxt.getText(),Integer.parseInt(phonetxt.getText()));
 			clist.add(i);
 			phone.setVisible(false);
@@ -98,10 +143,27 @@ public class Main extends Frame implements ActionListener{
 			username.setVisible(true);
 			usernametxt.setVisible(true);
 			password.setVisible(true);
+			bill.setVisible(false);
 			passwordtxt.setVisible(true);
+			price.setVisible(false);
+			pricetxt.setVisible(false);
+			item.setVisible(false);
+			itemtxt.setVisible(false);
+			quantity.setVisible(false);
+			quantitytxt.setVisible(false);
+			usernametxt.setText("");
+			passwordtxt.setText("");
+			cidtxt.setText("");
+			phonetxt.setText("");
 			area.setText("");
-			for (Customer f : clist)
-				area.setText(area.getText()+"\n"+f.toString());
+			for (Item f : items)
+				{
+					total+=f.total;
+//					area.setText(area.getText()+"\n"+f.toString());
+				}
+			area.setText(area.getText()+"\nTotal BILL"+total);
+			total= 0;
+			first = true;
 		}
 	}
 	public static void main(String[] args) {

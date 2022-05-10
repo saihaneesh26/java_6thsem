@@ -13,6 +13,6 @@ public class Customer {
 	}
 	
 	public String toString() {
-		return "Username :"+username+"CID: "+cid+" PHONE: "+phone;
+		return "Username :"+username+"  CID: "+cid+"   PHONE: "+phone;
 	}
 }
