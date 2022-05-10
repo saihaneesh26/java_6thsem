@@ -1,8 +1,8 @@
 # java_6thsem
-Q1. Book
-Q2. Telephone
+Q2. Book
+Q1. Telephone
 Q3. Swings_Student
-Q4. Swings_book (not complete)
+Q4. Swings_customer
 
 
 
