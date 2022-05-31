@@ -7,22 +7,31 @@ import java.awt.event.*;
 import java.sql.*;
 
 public class Main extends Frame implements ActionListener{
-	JTextArea area;
-	JLabel name,state,comm,rate;
-	JTextField nametxt,statetxt,commtxt,ratetxt;
-	JButton submit;
+	JLabel name,state,comm,rate,cname,cstate,climit;
+	JTextField nametxt,statetxt,commtxt,ratetxt,cnametxt,cstatetxt,climittxt;
+	JButton submit,display;
 	public Main() {
 		
-		name = new JLabel("Name");
-		state = new JLabel("State");
-		comm = new JLabel("Commision");
-		rate = new JLabel("Rate");
+		name = new JLabel("Rep Name");
+		state = new JLabel("Rep State");
+		comm = new JLabel("Rep Commision");
+		rate = new JLabel("Rep Rate");
 		
 		nametxt = new JTextField();
 		statetxt = new JTextField();
 		commtxt = new JTextField();
 		ratetxt = new JTextField();
-		submit = new JButton("Submit");
+		
+		cname = new JLabel("Customer Name");
+		cstate = new JLabel("Customer State");
+		climit = new JLabel("Credit Limit");
+		
+		cnametxt = new JTextField();
+		cstatetxt = new JTextField();
+		climittxt = new JTextField();
+		
+		
+		submit = new JButton("ADD");
 		
 		add(name);
 		add(nametxt);
@@ -32,9 +41,17 @@ public class Main extends Frame implements ActionListener{
 		add(commtxt);
 		add(rate);
 		add(ratetxt);
+		
+		add(cname);
+		add(cnametxt);
+		add(cstate);
+		add(cstatetxt);
+		add(climit);
+		add(climittxt);
+		
 		add(submit);
 		setSize(800,600);
-		setLayout(new GridLayout(5,2));
+		setLayout(new GridLayout(9,2));
 		setVisible(true);
 		
 		
@@ -43,7 +60,10 @@ public class Main extends Frame implements ActionListener{
 	public void actionPerformed(ActionEvent ev) {
 		if(ev.getSource()==submit) {
 			try {
-				rep r = new rep(nametxt.getText(),statetxt.getText(),commtxt.getText(),ratetxt.getText());
+				rep r = new rep();
+				r.insert(nametxt.getText(),statetxt.getText(),commtxt.getText(),ratetxt.getText());
+				Customer c = new Customer();
+				c.insert(cnametxt.getText(),cstatetxt.getText(),climittxt.getText(),1);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
