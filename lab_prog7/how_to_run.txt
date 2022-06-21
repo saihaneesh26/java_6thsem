@@ -1,3 +1,4 @@
 paste the .java file in /src/main/java folder
 paste the html file in webapp
+create a new txt file and paste the path in the FileWriter's path
 run......
