@@ -35,7 +35,7 @@ public class TAX extends HttpServlet {
 		int tax = Integer.parseInt(request.getParameter("tax"));
 		response.getWriter().append(name);
 		try{
-	        FileWriter writer = new FileWriter("/home/ritadmin/eclipse-workspace/19is047/lab_7/src/main/webapp/salary.txt");
+	        FileWriter writer = new FileWriter("/home/ritadmin/eclipse-workspace/19is047/lab_7/src/main/webapp/salary.txt");//replace with ur txt file path
 	        writer.write("NAME: "+name+"\nSALARY: "+String.valueOf(salary)+"\nTAX: "+String.valueOf(tax)+"\n");
 	        System.out.println("Written to file");
 	        writer.close();
