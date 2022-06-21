@@ -1,1 +1,12 @@
+first paste the mysql-connector.jar into the apache server/lib folder where you have the servlet-api.jar
+then add the .java(servlet) files to the main/src/java folder
+and NewFile.html to the webapp folder
+add the jar files to the project from buildpath->configure buildpath->libraries->classpath click add external jar files and add both mysql-connector.jar and servlet-api.jar -> apply and close
+run the .html file on the server
 
+can do the insert, delete ,update and view ops on the data from database 
+
+NOTE:
+(FOR THIS QUESTION)
+create database and table 
+- i have named the database as javalab ; table name as patients ; with only one column - name 
