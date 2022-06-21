@@ -1,3 +1,3 @@
 paste the .java file in /src/main/java folder
-paste the html file in WEB_INF
+paste the html file in webapp
 run......
