@@ -1,1 +1,8 @@
+paste the shirt.java in shirt package
+and other prgm9.java in default package
+the html and jsp files in webapp
+remember to add servlet-api jar file to project
 
+NEW:
+add the imports in jsp file line 3,4
+redirection in prgm9 47-50lines
