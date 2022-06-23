@@ -7,15 +7,16 @@ public class rep extends connection{
 		// TODO Auto-generated constructor stub
 	}
 	public void insert(String name,String state,String comm,String rate) throws SQLException,ClassNotFoundException{
-		Statement st = conn.createStatement();
+		
 		String sql = " insert into rep(repname,state,commision,rate)" + " values (?, ?, ?, ?)";
 		 PreparedStatement preparedStmt = conn.prepareStatement(sql);
 		  preparedStmt.setString (1, name);
 		  preparedStmt.setString (2, state);
 		  preparedStmt.setString (3, comm);
 		  preparedStmt.setString(4, rate);
-		  preparedStmt.execute();
+		  preparedStmt.executeUpdate();
 		System.out.println("Pushed data rep");
+		Statement st = conn.createStatement();
 		ResultSet r = st.executeQuery("Select * from rep");
 		while(r.next()) {
 			System.out.println("Name: "+r.getString("repname"));
