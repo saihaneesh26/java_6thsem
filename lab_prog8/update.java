@@ -1,8 +1,7 @@
 
 
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,8 +43,8 @@ public class update extends HttpServlet {
 			// TODO Auto-generated catch block
 			response.getWriter().append(e.toString());
 		}
-		
-			}
+		//		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

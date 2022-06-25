@@ -1,6 +1,7 @@
 
+
+import java.io.*;
 import java.sql.*;
-import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,13 +37,15 @@ public class view extends HttpServlet {
 			s.setString(1,name);
 			ResultSet r = s.executeQuery();
 			while(r.next()) {
-				response.getWriter().append(r.getString("name"));
+				response.getWriter().append(r.getString("name")+r.getString("id"));
 			}
 		}catch(Exception e) {
 			response.getWriter().append(e.toString());
 
 		}
-			}
+		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
