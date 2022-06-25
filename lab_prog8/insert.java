@@ -35,7 +35,7 @@ public class insert extends HttpServlet {
 				String sql = "insert into patients values(?)";
 				PreparedStatement st= c.prepareStatement(sql);
 				st.setString(1,name);
-				st.execute();
+				st.executeUpdate();
 				response.getWriter().append("inserted");
 			} catch (SQLException | ClassNotFoundException e) {
 				// TODO Auto-generated catch block
