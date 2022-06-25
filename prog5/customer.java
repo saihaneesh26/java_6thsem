@@ -56,7 +56,7 @@ public class customer extends Frame implements ActionListener{
 					st1.setString(1,repno);
 					ResultSet res = st1.executeQuery();
 					while(res.next()) {
-						JOptionPane.showMessageDialog(this,res.getString("CL>15000\nNAME:repname"));
+						JOptionPane.showMessageDialog(this,"CL>15000\nNAME:"+res.getString("repname"));
 					}
 					
 				}
