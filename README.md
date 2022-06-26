@@ -1,3 +1,5 @@
+NOTE: The programs maynot be complete and maybe incorrect. 
+
 # java_6thsem
 Q2. Book
 Q1. Telephone
