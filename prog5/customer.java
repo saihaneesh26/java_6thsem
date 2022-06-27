@@ -61,13 +61,14 @@ public class customer extends Frame implements ActionListener{
 					
 				}
 				
-				String sql = "insert into customer(cusno,cusname,climit,repno) values(?,?,?,?)";
+				String sql = "insert into customer(cusno,cusname,climit,repno,state) values(?,?,?,?,?)";
 				PreparedStatement st;
 				st = connection.c.prepareStatement(sql);
 				st.setString(1, no);
 				st.setString(2, na);
 				st.setString(3, cl);
 				st.setString(4, repno);
+				st.setString(5,"state");//get params correctly..if forgot to consider this
 				st.executeUpdate();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
