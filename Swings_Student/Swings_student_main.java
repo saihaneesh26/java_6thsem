@@ -24,10 +24,10 @@ public class Main extends Frame implements ActionListener{
 		g2 = new JLabel("SGPA-2");
 		g3 = new JLabel("SGPA-3");
 		cat = new JLabel("Category");
-		txtname = new JTextField("Name");
-		txtusn = new JTextField("USN");
-		txtaddr = new JTextField("Address");
-		txtage = new JTextField(10);
+		txtname = new JTextField();
+		txtusn = new JTextField();
+		txtaddr = new JTextField();
+		txtage = new JTextField();
 		txtg1 = new JTextField();
 		txtg2 = new JTextField();
 		txtg3 = new JTextField();
