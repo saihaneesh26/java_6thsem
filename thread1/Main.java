@@ -35,3 +35,23 @@ public class Main implements Runnable{
 		n.start();
 	}
 }
+/*
+output:
+
+Thread 1
+Starting thread:Thread 1
+Thread-2
+Starting thread:Thread-2
+running Thread 1
+thread:Thread 1,4
+running Thread-2
+thread:Thread-2,4
+thread:Thread 1,3
+thread:Thread-2,3
+thread:Thread 1,2
+thread:Thread-2,2
+thread:Thread 1,1
+thread:Thread-2,1
+exitingThread 1
+exitingThread-2
+*/
